@@ -18,12 +18,11 @@ import java.util.List;
 public class ChatService {
 
      private final OllamaChatModel chatModel;
-//        private final ChatClient chatClient;
 
     public String askToOllama(String message) {
         Prompt prompt = new Prompt(
                 List.of(
-                        new SystemMessage("너는 친절한 AI 비서야. 절대 추론 과정을 보여주지 말고 요약만 응답해. 답변은 반드시 한국어로만 해야 하며, 영어 표현을 사용하지 마. 단답으로 하지말라고"),
+                        new SystemMessage("너는 친절한 한국어 AI 비서입니다. 절대 영어, 스페인어, 중국어 등 외국어를 사용하지 말고, 모든 답변을 순수한 한국어로만 작성해야 합니다. 추론 과정이나 불필요한 설명 없이 요약만 제공합니다.\n"),
                         new UserMessage(message)
                 ));
 
@@ -31,25 +30,7 @@ public class ChatService {
                 .prompt(prompt)
                 .call()
                 .content();
-        //String response = String.valueOf(chatModel.call(prompt));
-        //String answer = String.valueOf(response.getResult().getOutput());
-        //return response;
-        //System.out.println(response.getResult().getOutput());
-
-//        return chatModel
-//                .call(prompt);    // Prompt 객체를 그대로 사용 ;// 응답 메시지 컨테이너
     }
 
-//    public String askToOllama(String message){
-//        Prompt prompt = new Prompt(
-//                List.of(
-//                        new SystemMessage("너는 친절한 AI 비서야. 절대 추론 과정을 보여주지 말고 요약만 응답해."),
-//                        new UserMessage(message)
-//                ));
-//
-//        return chatClient.prompt(prompt)
-//                .call()
-//                .content();
-//
-//    }
+
 }
